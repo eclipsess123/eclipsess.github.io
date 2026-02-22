@@ -95,122 +95,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş ve Çalışmalar</title>
+    <title>Giriş Paneli</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f3;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
+            margin: 0;
         }
 
-        /* Giriş Paneli Stili */
-        #login-section {
-            margin-top: 100px;
+        /* Giriş Kartı Tasarımı */
+        #login-card {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
             text-align: center;
-            transition: all 0.5s ease;
+            width: 320px;
+            transition: 0.3s;
         }
+
+        h2 { color: #333; margin-bottom: 20px; }
 
         input {
-            display: block;
-            width: 250px;
+            width: 100%;
             padding: 12px;
-            margin: 10px auto;
+            margin: 8px 0;
             border: 1px solid #ddd;
-            border-radius: 6px;
+            border-radius: 8px;
+            box-sizing: border-box; /* Padding'in genişliği bozmasını engeller */
         }
 
         button {
-            padding: 12px 30px;
-            background-color: #28a745;
+            width: 100%;
+            padding: 12px;
+            background-color: #4A90E2;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
         }
+
+        button:hover { background-color: #357ABD; }
+
+        /* Hata Mesajı */
+        #error-msg { color: #e74c3c; font-size: 14px; margin-top: 10px; height: 20px; }
 
         /* Gizli Çalışmalar Bölümü */
-        #works-section {
-            display: none; /* Başlangıçta gizli */
-            width: 80%;
-            max-width: 800px;
-            margin: 40px 0;
-            padding: 20px;
+        #works-container {
+            display: none;
+            width: 90%;
+            max-width: 900px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 20px;
         }
 
-        .work-item {
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-        }
-
-        /* Açılma Animasyonu İçin Sınıf */
-        .show-content {
-            display: block !important;
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        .work-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 5px solid #4A90E2;
+            margin-bottom: 15px;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
 
-    <div id="login-section">
-        <h2>Sistem Girişi</h2>
-        <input type="password" id="passInput" placeholder="Şifreyi Giriniz">
-        <button onclick="unlockContent()">İçeriği Göster</button>
-        <p id="error" style="color: red; font-size: 13px;"></p>
+    <div id="login-card">
+        <h2>Panel Girişi</h2>
+        <input type="text" id="userInput" placeholder="Kullanıcı Adı">
+        <input type="password" id="passInput" placeholder="Şifre">
+        <button onclick="login()">Giriş Yap</button>
+        <p id="error-msg"></p>
     </div>
 
-    <div id="works-section">
-        <h2 style="color: #333; border-bottom: 2px solid #28a745; padding-bottom: 10px;">📋 Portfolyo / Çalışmalarım</h2>
-        
-        <div class="work-item">
-            <h3>🚀 Proje 1: E-Ticaret Arayüzü</h3>
-            <p>Modern ve kullanıcı dostu bir alışveriş deneyimi tasarımı.</p>
+    <div id="works-container">
+        <h2 style="text-align:left; color:#4A90E2;">📂 Tamamlanan Çalışmalar</h2>
+        <hr>
+        <div class="work-box">
+            <h3>Web Tasarım Projesi</h3>
+            <p>Modern bir kurumsal kimlik çalışması ve responsive arayüz tasarımı.</p>
         </div>
-
-        <div class="work-item">
-            <h3>📊 Proje 2: Veri Analiz Paneli</h3>
-            <p>Karmaşık verilerin görselleştirildiği yönetim ekranı.</p>
+        <div class="work-box">
+            <h3>Grafik Tasarım</h3>
+            <p>Sosyal medya içerikleri için hazırlanan özel illüstrasyonlar.</p>
         </div>
-
-        <div class="work-item">
-            <h3>📱 Proje 3: Mobil Uygulama</h3>
-            <p>iOS ve Android platformları için geliştirilmiş fitness takip uygulaması.</p>
-        </div>
-        
-        <button onclick="location.reload()" style="background:#666; margin-top:20px;">Çıkış Yap</button>
+        <button onclick="location.reload()" style="width:auto; background:#888;">Güvenli Çıkış</button>
     </div>
 
     <script>
-        function unlockContent() {
-            const pass = document.getElementById('passInput').value;
-            const loginBox = document.getElementById('login-section');
-            const worksBox = document.getElementById('works-section');
-            const errorMsg = document.getElementById('error');
+        function login() {
+            // Kullanıcının yazdığı değerleri al
+            const uName = document.getElementById('userInput').value;
+            const uPass = document.getElementById('passInput').value;
+            const error = document.getElementById('error-msg');
 
-            // Şifreyi burada belirle (Örn: 1234)
-            if (pass === "1234") {
-                // Giriş kutusunu gizle
-                loginBox.style.display = "none";
-                
-                // Çalışmalar kısmını aç
-                worksBox.classList.add('show-content');
+            // --- AYARLAR ---
+            const dogruKullanici = "admin";
+            const dogruSifre = "1234";
+            // ---------------
+
+            if (uName === dogruKullanici && uPass === dogruSifre) {
+                // Giriş başarılıysa formu gizle, çalışmaları göster
+                document.getElementById('login-card').style.display = "none";
+                document.getElementById('works-container').style.display = "block";
             } else {
-                errorMsg.innerText = "Hatalı şifre! Lütfen tekrar deneyin.";
+                // Hatalıysa mesaj göster
+                error.innerText = "Kullanıcı adı veya şifre hatalı!";
             }
         }
     </script>

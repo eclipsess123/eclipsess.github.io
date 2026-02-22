@@ -9,7 +9,7 @@
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: purple;
-    color: pink;
+    color: purple;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -33,7 +33,7 @@ header {
     font-size: 1.4rem;
     font-weight: 800;
     letter-spacing: 2px;
-    color: #fff;
+    color: purple;
     text-transform: uppercase;
 }
 
@@ -48,14 +48,14 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #888;
+    color: purple;
     font-size: 0.9rem;
     font-weight: 500;
     transition: 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #fff;
+    color: purple;
     text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 

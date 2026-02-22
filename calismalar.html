@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş ve Çalışmalar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Giriş Paneli Stili */
+        #login-section {
+            margin-top: 100px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        input {
+            display: block;
+            width: 250px;
+            padding: 12px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 12px 30px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Gizli Çalışmalar Bölümü */
+        #works-section {
+            display: none; /* Başlangıçta gizli */
+            width: 80%;
+            max-width: 800px;
+            margin: 40px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .work-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        /* Açılma Animasyonu İçin Sınıf */
+        .show-content {
+            display: block !important;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-section">
+        <h2>Sistem Girişi</h2>
+        <input type="password" id="passInput" placeholder="Şifreyi Giriniz">
+        <button onclick="unlockContent()">İçeriği Göster</button>
+        <p id="error" style="color: red; font-size: 13px;"></p>
+    </div>
+
+    <div id="works-section">
+        <h2 style="color: #333; border-bottom: 2px solid #28a745; padding-bottom: 10px;">📋 Portfolyo / Çalışmalarım</h2>
+        
+        <div class="work-item">
+            <h3>🚀 Proje 1: E-Ticaret Arayüzü</h3>
+            <p>Modern ve kullanıcı dostu bir alışveriş deneyimi tasarımı.</p>
+        </div>
+
+        <div class="work-item">
+            <h3>📊 Proje 2: Veri Analiz Paneli</h3>
+            <p>Karmaşık verilerin görselleştirildiği yönetim ekranı.</p>
+        </div>
+
+        <div class="work-item">
+            <h3>📱 Proje 3: Mobil Uygulama</h3>
+            <p>iOS ve Android platformları için geliştirilmiş fitness takip uygulaması.</p>
+        </div>
+        
+        <button onclick="location.reload()" style="background:#666; margin-top:20px;">Çıkış Yap</button>
+    </div>
+
+    <script>
+        function unlockContent() {
+            const pass = document.getElementById('passInput').value;
+            const loginBox = document.getElementById('login-section');
+            const worksBox = document.getElementById('works-section');
+            const errorMsg = document.getElementById('error');
+
+            // Şifreyi burada belirle (Örn: 1234)
+            if (pass === "1234") {
+                // Giriş kutusunu gizle
+                loginBox.style.display = "none";
+                
+                // Çalışmalar kısmını aç
+                worksBox.classList.add('show-content');
+            } else {
+                errorMsg.innerText = "Hatalı şifre! Lütfen tekrar deneyin.";
+            }
+        }
+    </script>
+
+</body>
+</html>
